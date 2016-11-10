@@ -1,0 +1,22 @@
+{
+  "name": "envoy",
+  "version": "1.0.0",
+  "description": "envoy test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mh4rly/envoy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mh4rly/envoy/issues"
+  },
+  "homepage": "https://github.com/mh4rly/envoy#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}
