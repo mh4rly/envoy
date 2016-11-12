@@ -1,5 +1,16 @@
+
+@import 'bourbon';
+@import 'neat';
+
 $primary-color: #333;
 
 #test {
   color: $primary-color;
+}
+
+
+section {
+  @include outer-container;
+  header { @include span-columns(3); }
+  section { @include span-columns(9); }
 }

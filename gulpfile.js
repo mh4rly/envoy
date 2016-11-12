@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var path = require('path');
+var neat = require('node-neat');
 
 gulp.task('default', function() {
   // place code for your default task here
@@ -12,7 +13,10 @@ var sass = require('gulp-sass');
 
 gulp.task('sass', function () {
   return gulp.src('sass/**/*.scss')
-    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed',
+      includePaths: require('node-neat').includePaths
+    }).on('error', sass.logError))
     .pipe(gulp.dest('css'));
 });
 
