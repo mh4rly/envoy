@@ -1,25 +1,23 @@
 var gulp = require('gulp');
-var less = require('gulp-less');
 var path = require('path');
 
 gulp.task('default', function() {
   // place code for your default task here
 });
 
-//less compiler
-gulp.task('less', function () {
-  return gulp.src('less/**/*.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(gulp.dest('css/'));
+'use strict';
+
+var gulp = require('gulp');
+var sass = require('gulp-sass');
+
+gulp.task('sass', function () {
+  return gulp.src('sass/**/*.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('css'));
 });
 
-
-//watch less changes
-gulp.task('watch', function () {
-  gulp.watch('less/**/*.less', ['less']);
+gulp.task('sass:watch', function () {
+  gulp.watch('sass/**/*.scss', ['sass']);
 });
 
-
-gulp.task('default', ['less', 'watch']);
+gulp.task('default', ['sass', 'sass:watch']);
