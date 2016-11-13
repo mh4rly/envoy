@@ -9,28 +9,35 @@ $primary-text-color: #fff;
 $background-color: #000;
 $link-color: #e34e33;
 
+// Define your breakpoints
+$tablet: new-breakpoint(max-width 768px 8);
+$mobile: new-breakpoint(max-width 480px 4);
+
 // Neat Overrides
 $max-width: em(940);
+
+
 body {
   color: $primary-text-color;
   background: $background-color;
 }
 a {
   color: $link-color;
+  display: block;
 }
 
 section {
-
+  @include outer-container;
+  #featured-work, #wire {
+    @include span-columns(12);
+    .featured-item, .wire-item {
+      @include span-columns(4 of 12);
+      @include media($mobile) {
+        @include span-columns(12 of 12);
+      }
+    }
+  }
 }
 h1,h2,h3 {
-  display: block;
-  clear: both;
-}
 
-#featured-work, #wire {
-  @include span-columns(12);
-  clear: both;
-  .featured-item, .wire-item {
-    @include span-columns(4 of 12);
-  }
 }
