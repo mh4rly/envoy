@@ -8,32 +8,180 @@ $primary-color: #333;
 $primary-text-color: #fff;
 $background-color: #000;
 $link-color: #e34e33;
+$text-color-grey: #9f9f9f;
+$text-color-teal: #67d9da;
 
 // Define your breakpoints
-$tablet: new-breakpoint(max-width 768px 8);
-$mobile: new-breakpoint(max-width 480px 4);
+$tablet: new-breakpoint(max-width 1023px 8);
+$mobile: new-breakpoint(max-width 768px 4);
 
 // Neat Overrides
 $max-width: em(940);
+$gutter: 0 20px;
 
 
 body {
   color: $primary-text-color;
   background: $background-color;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 a {
   color: $link-color;
-  display: block;
+  text-decoration: none;
+}
+h1 {}
+h2 {
+  font-size: 36px;
+  a {
+    font-size: 36px;
+  }
 }
 
+header {
+  position: fixed;
+  width: 100%;
+  background: rgba(0, 0, 0, .8);
+  z-index: 1;
+  height: 60px;
+  .container {
+    @include outer-container;
+    @include media($tablet) {
+      padding: $gutter;
+    }
+    a.main-logo {
+      display: inline-block;
+      background: url(../assets/images/envoy-main-logo.gif);
+      width: 87px;
+      height: 25px;
+      background-size: 87px;
+      position: relative;
+      top: 14px;
+      span{
+        display: none;
+      }
+    }
+    nav {
+      display: inline-block;
+      ul {
+        padding: 0;
+        margin-left: 20px;
+        position: relative;
+        top: 12px;
+        li {
+          display: inline-block;
+          margin-right: 10px;
+          a {
+            color: #fff;
+            text-decoration: none;
+            &:hover {
+              color: $text-color-grey;
+            }
+            &.active {
+              color: $link-color;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 section {
+  @include media($tablet) {
+    padding: $gutter;
+  }
   @include outer-container;
+  &#slide {
+    max-width: 100%;
+    margin: 0;
+    position: relative;
+    padding: 0;
+    img {
+      width: 100%;
+      height: auto;
+      @include media($tablet) {
+        height: 400px;
+        width: auto;
+      }
+      @include media($mobile) {
+        height: 300px;
+      }
+    }
+    .slide-text {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #000;
+      max-width: $max-width;
+      width:400px;
+      right: 0;
+      left: 0;
+      margin: auto;
+    }
+  }
+  &#body-text {
+    border-bottom: 5px solid #282828;
+  }
+  //section header
+  .section-header {
+    font-size: 22px;
+    color: $text-color-grey;
+    display: inline-block;
+  }
+  a {
+    font-size: 13px;
+    display: inline-block;
+  }
   #featured-work, #wire {
     @include span-columns(12);
     .featured-item, .wire-item {
       @include span-columns(4 of 12);
       @include media($mobile) {
         @include span-columns(12 of 12);
+        margin-right: 0;
+      }
+    }
+  }
+  #featured-work {
+    .featured-item {
+      img {
+        width: 100%;
+      }
+      .featured-title {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .featured-body {
+        margin-top: 5px;
+        font-size: 13px;
+        font-weight: bold;
+        color: $text-color-grey;
+      }
+      @include media($mobile) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+  #wire {
+    .wire-item {
+      @include media($mobile) {
+        margin-bottom: 30px;
+      }
+      .wire-title {
+        font-size: 36px;
+        font-weight: bold;
+      }
+      .wire-date {
+        color: $text-color-grey;
+        margin: 5px 0;
+        font-weight: bold;
+        font-size: 13px;
+      }
+      &:last-child {
+        .wire-title {
+          color: $text-color-teal;
+        }
       }
     }
   }
