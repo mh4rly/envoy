@@ -1,14 +1,17 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-
+  <meta name="viewport" content="width=device-width">
   <title>The HTML5 Herald</title>
 
-
+  <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script src="js/unslider-master/src/js/unslider.js"></script>
+  <link rel="stylesheet" href="css/unslider-css/unslider.css">
   <!--[if lt IE 9]>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
   <![endif]-->
@@ -19,7 +22,7 @@
     <div class="container">
       <a id="main-logo"><h1>Envoy</h1></a>
       <!--nav-->
-      <nav>
+      <nav class="active">
         <ul>
           <li><a href="#">Work</a></li>
           <li><a href="#">Services</a></li>
@@ -34,12 +37,48 @@
       <div id="social-media">
         <a class="twitter" href="#">Tweet. Tweet.</a>
       </div>
+      <div id="hamburger-menu">=</div>
       <!--social media end-->
     </div>
   </header>
 
   <!--slide-->
   <section id="slide">
+    <div class="my-slider">
+	    <ul>
+        <li>
+          <img src="assets/images/slide.jpg">
+          <div class="slide-text">
+            <h3 class="slide-title">The Iphone Unchained 1</h3>
+            <p class="slide-desc">
+              Tarantino’s outrageous film Djano Unchained needed an equally in your face mobile experience. Bloody good awesomeness ensued. <a href="#">View Project</a>
+            </p>
+          </div>
+        </li>
+		    <li>
+          <img src="assets/images/slide.jpg">
+          <div class="slide-text">
+            <h3 class="slide-title">The Iphone Unchained 2</h3>
+            <p class="slide-desc">
+              Tarantino’s outrageous film Djano Unchained needed an equally in your face mobile experience. Bloody good awesomeness ensued. <a href="#">View Project</a>
+            </p>
+          </div>
+        </li>
+
+		    <li>
+          <img src="assets/images/slide.jpg">
+          <div class="slide-text">
+            <h3 class="slide-title">The Iphone Unchained 3</h3>
+            <p class="slide-desc">
+              Tarantino’s outrageous film Djano Unchained needed an equally in your face mobile experience. Bloody good awesomeness ensued. <a href="#">View Project</a>
+            </p>
+          </div>
+        </li>
+	    </ul>
+    </div>
+  </section>
+
+  <!-- <section id="slide">
     <img src="assets/images/slide.jpg">
     <div class="slide-text">
       <h3 class="slide-title">The Iphone Unchained</h3>
@@ -47,7 +86,7 @@
         Tarantino’s outrageous film Djano Unchained needed an equally in your face mobile experience. Bloody good awesomeness ensued. <a href="#">View Project</a>
       </p>
     </div>
-  </section>
+  </section>-->
   <!--slide end-->
 
   <!--body text-->

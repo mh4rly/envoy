@@ -11,6 +11,8 @@ $background-color-red: #e34e33;
 $link-color: #e34e33;
 $text-color-grey: #9f9f9f;
 $text-color-teal: #67d9da;
+$text-color-red: #d90e0a;
+$background-color-transparent: rgba(0, 0, 0, .8);
 
 // Define your breakpoints
 $tablet: new-breakpoint(max-width 1023px 8);
@@ -20,8 +22,12 @@ $mobile: new-breakpoint(max-width 768px 4);
 $max-width: em(940);
 $gutter: 0 20px;
 
-
+html {
+  overflow: auto;
+}
 body {
+  width: 100%;
+  overflow: hidden;
   color: $primary-text-color;
   background: $background-color;
   margin: 0;
@@ -42,8 +48,8 @@ h2 {
 header {
   position: fixed;
   width: 100%;
-  background: rgba(0, 0, 0, .8);
-  z-index: 1;
+  background: $background-color-transparent;
+  z-index: 10;
   height: 60px;
   .container {
     position: relative;
@@ -59,20 +65,46 @@ header {
       background-size: 87px;
       position: relative;
       top: 14px;
+      @include media($mobile) {
+        top: 19px;
+      }
       h1{
         display: none;
       }
     }
     nav {
       display: inline-block;
+      @include media($mobile) {
+        display: block;
+        background: $background-color-transparent;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0px;
+      }
       ul {
+        display: block;
+        @include media($mobile) {
+          display: none;
+        }
+        &.active {
+          display: block;;
+        }
         padding: 0;
         margin-left: 20px;
         position: relative;
         top: 12px;
+        @include media($mobile) {
+          top: 0;
+        }
         li {
           display: inline-block;
           margin-right: 10px;
+          @include media($mobile) {
+            display: block;
+            margin-right: 0;
+            padding: 10px 0;
+          }
           a {
             color: #fff;
             text-decoration: none;
@@ -88,7 +120,8 @@ header {
     }
     #social-media {
       float: right;
-
+      position: relative;
+      top: 50px;
       a {
         background: #464646;
         width: 180px;
@@ -127,6 +160,19 @@ header {
           color: white;
         }
       }
+      @include media($mobile) {
+        display: none;
+      }
+    }
+    #hamburger-menu {
+      display: none;
+      @include media($mobile) {
+        display: block;
+        float: right;
+        color: #fff;
+        font-size: 50px;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -140,27 +186,140 @@ section {
     margin: 0;
     position: relative;
     padding: 0;
+    @include media($mobile) {
+      padding-top: 60px;
+    }
+    //custom unslider overide
+    .unslider {
+      position: relative;
+      .unslider-wrap.unslider-carousel>li {
+        position: relative;
+        &.unslider-active {
+          z-index: 2;
+          overflow: hidden;
+        }
+      }
+      //arrow
+      .unslider-arrow {
+        position: absolute;
+        bottom: 20px;
+        z-index: 10;
+        overflow: hidden;
+        text-indent: -500px;
+        background: url(../assets/images/arrows.png);
+        width: 20px;
+        height: 30px;
+        background-position: -92px;
+        @include media($mobile) {
+          top: 275px;
+          z-index: 13;
+        }
+
+        &.prev {
+          right: 70px;
+          left: auto;
+          background-position: -22px;
+        }
+      }
+
+      //nav
+      .unslider-nav {
+        position: absolute;
+        bottom: 60px;
+        display: block;
+        z-index: 12;
+        margin: 0 auto;
+        display: block;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        @include media($mobile) {
+          top: 280px;
+        }
+        ol {
+          text-align: center;
+          li {
+            background: #fff;
+            border-radius: 5px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border: 1px solid #000;
+            margin: 5px;
+            text-indent: -5000px;
+            cursor: pointer;
+            &.unslider-active {
+              background: $text-color-grey;
+            }
+            &:hover {
+              background: $background-color-red;
+            }
+          }
+        }
+      }
+    }
+
     img {
       width: 100%;
       height: auto;
       @include media($tablet) {
         height: 400px;
         width: auto;
+        margin-left: -8rem;
       }
       @include media($mobile) {
-        height: 300px;
+        height: 360px;
+        margin-left: -22rem;
+
       }
     }
     .slide-text {
+      @include outer-container;
       position: absolute;
-      top: 20px;
+      top: 3rem;
       left: 20px;
       color: #000;
       max-width: $max-width;
-      width:400px;
       right: 0;
       left: 0;
       margin: auto;
+      padding-right: 37rem;
+      @include media($tablet) {
+        top: 2rem;
+        padding-left: 20px;
+        padding-right: 20rem;
+      }
+      @media (max-width: 1280px) {
+        top: 2rem;
+      }
+      @include media($mobile) {
+        position: relative;
+        background: #fff;
+        padding-right: 0;
+        padding: 20px;
+        top: -10px;
+      }
+      .slide-title {
+        color: $text-color-red;
+        color: #d90e0a;
+        text-transform: uppercase;
+        font-family: 'Oswald', sans-serif;
+        font-size: 62px;
+        line-height: 70px;
+        margin-bottom: 30px;
+        @media (max-width: 1280px) {
+          font-size: 50px;
+          line-height: 60px;
+          margin-bottom: 20px;
+        }
+        @include media($mobile) {
+          margin:0;
+        }
+      }
+      .slide-desc {
+        color: $text-color-grey;
+      }
     }
   }
   &#body-text {
@@ -206,7 +365,7 @@ section {
         color: $text-color-grey;
       }
       @include media($mobile) {
-        margin-bottom: 30px;
+        margin-bottom: 50px;
       }
     }
   }
