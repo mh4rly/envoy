@@ -7,6 +7,7 @@
 $primary-color: #333;
 $primary-text-color: #fff;
 $background-color: #000;
+$background-color-red: #e34e33;
 $link-color: #e34e33;
 $text-color-grey: #9f9f9f;
 $text-color-teal: #67d9da;
@@ -45,11 +46,12 @@ header {
   z-index: 1;
   height: 60px;
   .container {
+    position: relative;
     @include outer-container;
     @include media($tablet) {
       padding: $gutter;
     }
-    a.main-logo {
+    a#main-logo {
       display: inline-block;
       background: url(../assets/images/envoy-main-logo.gif);
       width: 87px;
@@ -57,7 +59,7 @@ header {
       background-size: 87px;
       position: relative;
       top: 14px;
-      span{
+      h1{
         display: none;
       }
     }
@@ -81,6 +83,48 @@ header {
               color: $link-color;
             }
           }
+        }
+      }
+    }
+    #social-media {
+      float: right;
+
+      a {
+        background: #464646;
+        width: 180px;
+        height: 40px;
+        display: block;
+        padding: 7px 17px;
+        font-size: 13px;
+        color: $text-color-teal;
+        position: absolute;
+        right: 0;
+        bottom: -10px;
+        @include media($tablet) {
+          right: 20px;
+        }
+        &:before {
+          content: '';
+          background: url(../assets/images/twitter-bird.png);
+          width: 21px;
+          height: 17px;
+          display: inline-block;
+          margin-right: 10px;
+          position: relative;
+          top: 3px;
+        }
+        &:after {
+          content: '+';
+          background: $background-color-red;
+          font-weight: bold;
+          width: 40px;
+          height: 40px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          font-size: 30px;
+          padding: 2px 11px;
+          color: white;
         }
       }
     }
@@ -121,6 +165,9 @@ section {
   }
   &#body-text {
     border-bottom: 5px solid #282828;
+    a {
+      font-size: 36px;
+    }
   }
   //section header
   .section-header {
@@ -184,6 +231,9 @@ section {
         }
       }
     }
+  }
+  .view-all {
+    margin-left: 10px;
   }
 }
 h1,h2,h3 {
