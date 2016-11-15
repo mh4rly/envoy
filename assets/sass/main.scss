@@ -22,6 +22,8 @@ $mobile: new-breakpoint(max-width 768px 4);
 $max-width: em(940);
 $gutter: 0 20px;
 
+
+//css
 html {
   overflow: auto;
 }
@@ -59,7 +61,7 @@ header {
     }
     a#main-logo {
       display: inline-block;
-      background: url(../assets/images/envoy-main-logo.gif);
+      background: url(../../assets/images/envoy-main-logo.gif);
       width: 87px;
       height: 25px;
       background-size: 87px;
@@ -138,7 +140,7 @@ header {
         }
         &:before {
           content: '';
-          background: url(../assets/images/twitter-bird.png);
+          background: url(../../assets/images/twitter-bird.png);
           width: 21px;
           height: 17px;
           display: inline-block;
@@ -206,7 +208,7 @@ section {
         z-index: 10;
         overflow: hidden;
         text-indent: -500px;
-        background: url(../assets/images/arrows.png);
+        background: url(../../assets/images/arrows.png);
         width: 20px;
         height: 30px;
         background-position: -92px;
